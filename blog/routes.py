@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,request
 from models.post import Post
-from models.user import User
+
 from extensions import db
 
 blog_bp = Blueprint("blog", __name__)
@@ -10,7 +10,7 @@ def create_post():
     if request.method == 'POST':
         ptitle = request.form.get('title')
         pcontent = request.form.get('content')
-        puser_id = request.form.get('user_id') # This prevents the 'null' error
+        puser_id = request.form.get('user_id') 
         
         new_post = Post(title=ptitle, content=pcontent, user_id=puser_id)
         db.session.add(new_post)
